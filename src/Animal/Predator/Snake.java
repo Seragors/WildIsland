@@ -1,5 +1,6 @@
 package Animal.Predator;
 
+import Animal.Animal;
 import Animal.Cell;
 import Animal.Species;
 
@@ -26,5 +27,8 @@ public class Snake extends Predator {
         return chance;
     }
 
-
+    @Override
+    public Animal born() {
+        return new Snake(getCell());
+    }
 }

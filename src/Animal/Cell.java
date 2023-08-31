@@ -1,5 +1,5 @@
 package Animal;
-import Animal.Animal;
+
 import Map.Herb;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class Cell {
 
     @Override
     public String toString() {
-        return "Cell{" +
+        return "Комірка {" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

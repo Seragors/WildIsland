@@ -1,4 +1,5 @@
 package Animal.Herbivore;
+import Animal.Animal;
 import Animal.Cell;
 import Animal.Species;
 
@@ -10,5 +11,10 @@ public class Hamster extends Herbivore{
 
     public Hamster(Cell cell) {
         super(cell, Species.HAMSTER);
+    }
+
+    @Override
+    public Animal born() {
+        return new Hamster(getCell());
     }
 }

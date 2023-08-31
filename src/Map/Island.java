@@ -11,7 +11,7 @@ public class Island {
     public static int y;
     public static List<Cell> cellList = new ArrayList<>();
     public static List<Animal> animalList = new ArrayList<>();
-    public static List<Herb> herbList = new ArrayList<>();
+    public static List<Herb> herbList = new ArrayList<Herb>();
 
     public Island(int x, int y) {
         this.x = x;

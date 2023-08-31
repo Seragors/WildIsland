@@ -12,4 +12,8 @@ public class Caterpillar extends Herbivore{
         super(cell, Species.CATERPILLAR);
     }
 
+    @Override
+    public Animal born() {
+        return new Caterpillar(getCell());
+    }
 }

@@ -1,6 +1,5 @@
 package Map;
 
-import Animal.Cell;
 import Animal.Organism;
 import Animal.Species;
 
