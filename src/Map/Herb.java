@@ -16,7 +16,7 @@ public class Herb extends Organism {
         if (getWeight() <= 0) {
             Island.herbList.remove(Herb.this);
             getCell().getHerbList().remove(Herb.this);
-            System.out.println(getName() + " Померла");
+            System.out.println(getName() + " загинула");
         }
     }
 }

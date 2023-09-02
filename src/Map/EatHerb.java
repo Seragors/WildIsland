@@ -1,6 +1,6 @@
 package Map;
 
-public class EatHerb {
+public class EatHerb extends Thread {
     SettingIsland settingIsland;
 
     public EatHerb(SettingIsland settingIsland) {
@@ -9,6 +9,11 @@ public class EatHerb {
     public void run(){
         for (int i  = 0; i < SettingIsland.COUNT_OF_MOVE; i++){
             settingIsland.eatHerb();
+            try {
+                Thread.sleep(SettingIsland.COUNT_OF_SLEEP);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

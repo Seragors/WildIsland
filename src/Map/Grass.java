@@ -1,6 +1,6 @@
 package Map;
 
-public class Grass {
+public class Grass extends Thread{
     SettingIsland settingIsland;
 
     public Grass(SettingIsland settingIsland) {
@@ -12,6 +12,11 @@ public class Grass {
             for (int j = 0; j < SettingIsland.COUNT_OF_HERB; j++) {
                 if (Island.herbList.size() < SettingIsland.COUNT_OF_HERB) {
                     new Herb();
+                    try {
+                        Thread.sleep(SettingIsland.COUNT_OF_SLEEP);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }

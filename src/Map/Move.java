@@ -1,6 +1,6 @@
 package Map;
 
-public class Move {
+public class Move extends Thread {
     SettingIsland settingIsland;
 
     public Move(SettingIsland settingIsland) {
@@ -10,6 +10,11 @@ public class Move {
     public void run(){
         for (int i = 0; i < SettingIsland.COUNT_OF_MOVE; i++){
             settingIsland.animalsMove();
+            try {
+                Thread.sleep(SettingIsland.COUNT_OF_SLEEP);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ public class SettingIsland {
     public static final int X = 100;
     public static final int Y = 20;
     public static final int COUNT_OF_MOVE = 2;
+    public static final int COUNT_OF_SLEEP = 4;
     public static final int COUNT_OF_HERB = 200;
     public static final int COUNT_OF_WOLF = 30;
     public static final int COUNT_OF_SNAKE = 30;
@@ -74,7 +75,7 @@ public class SettingIsland {
         for (int i = 0; i < COUNT_OF_CATERPILLAR; i++) {
             new Caterpillar();
         }
-        System.out.println("Створенний острів розміром: " + Island.x + "x" + Island.y + " з " + Island.cellList.size() + " Рослинами, " + countHerbivore() + " Травоїдними, " + countPredator() + " Хижаками.");
+        System.out.println("Створенний острів розміром: " + Island.x + "x" + Island.y + " з " + Island.herbList.size() + " Рослинами, " + countHerbivore() + " Травоїдними, " + countPredator() + " Хижаками.");
     }
 
     public int countHerbivore() {
@@ -95,26 +96,26 @@ public class SettingIsland {
         return count;
     }
 
-    public void animalsMove() {
+    public synchronized void animalsMove() {
         for (int i = 0; i < Island.animalList.size(); i++) {
             Island.animalList.get(i).move();
         }
     }
 
-    public void eatAnimals() {
+    public synchronized void eatAnimals() {
         for (int i = 0; i < Island.animalList.size(); i++) {
             if (Island.animalList.get(i) instanceof Predator){
                 Island.animalList.get(i).eat();
             }
         }
     }
-    public void animalReproduction (){
+    public synchronized void animalReproduction (){
         for (int i = 0; i < Island.animalList.size(); i++){
             Island.animalList.get(i).reproduction();
         }
     }
 
-    public void  eatHerb(){
+    public synchronized void  eatHerb(){
         for (int i = 0; i < Island.animalList.size(); i++){
             if (Island.animalList.get(i) instanceof Herbivore){
                 Island.animalList.get(i).eat();
@@ -123,6 +124,6 @@ public class SettingIsland {
     }
 
     public void getStatistic() {
-        System.out.println("На острові: " + Island.cellList.size() + " Рослин, " + countHerbivore() + " Травоїдних, " + countPredator() + " Хижаків.");
+        System.out.println("На острові: " + Island.herbList.size() + " Рослин, " + countHerbivore() + " Травоїдних, " + countPredator() + " Хижаків.");
     }
 }

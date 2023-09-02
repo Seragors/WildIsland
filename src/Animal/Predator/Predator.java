@@ -24,22 +24,22 @@ public abstract class Predator extends Animal {
         return chance;
     }
 
-    public void eat() {
+    public synchronized void eat() {
         if (getSatiety() < getWeightSatiety()) {
-            for (int i = 0; i < getCell().getAnimalList().size(); i++){
-                if (getSatiety() < getWeightSatiety()){
+            for (int i = 0; i < getCell().getAnimalList().size(); i++) {
+                if (getSatiety() < getWeightSatiety()) {
                     int j = new Random().nextInt(MAX_COUNT) + 1;
                     Animal food = getCell().getAnimalList().get(i);
                     chance = chanceEat(food.getSpecies());
-                    if (j <= chance){
+                    if (j <= chance) {
                         double newStatiety = getSatiety() + food.getWeightSatiety();
-                        if (newStatiety > getWeightSatiety()){
+                        if (newStatiety > getWeightSatiety()) {
                             newStatiety = getWeightSatiety();
-                            setSatiety(newStatiety);
-                            Island.animalList.remove(food);
-                            getCell().getAnimalList().remove(food);
-                            System.out.println(getName() + " зїв " + food.getName());
                         }
+                        setSatiety(newStatiety);
+                        Island.animalList.remove(food);
+                        getCell().getAnimalList().remove(food);
+                        System.out.println(getName() + " з'їв " + food.getName());
                     }
                 }
             }

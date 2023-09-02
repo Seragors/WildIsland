@@ -17,7 +17,7 @@ public abstract class Herbivore extends Animal {
     }
 
     @Override
-    public void eat() {
+    public synchronized void eat() {
         if (getSatiety() < getWeightSatiety()) {
             for (int i = 0; i < getCell().getHerbList().size(); i++) {
                 if (getSatiety() < getWeightSatiety()) {
@@ -26,13 +26,13 @@ public abstract class Herbivore extends Animal {
                     double newSatiety = oldSatiety + food.getWeight();
                     if (newSatiety > getWeightSatiety()) {
                         newSatiety = getWeightSatiety();
-                        setSatiety(newSatiety);
-                        if (newSatiety != oldSatiety) {
-                            food.setWeight(food.getWeight() - (newSatiety - oldSatiety));
-                            System.out.println(getName() + " Закусив " + food.getName());
-                            food.die();
-                        }
                     }
+                    setSatiety(newSatiety);
+                    if (newSatiety != oldSatiety) {
+                        food.setWeight(food.getWeight() - (newSatiety - oldSatiety));
+                    }
+                    System.out.println(getName() + " з'їв " + food.getName());
+                    food.die();
                 }
             }
         }

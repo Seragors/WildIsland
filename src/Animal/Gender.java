@@ -1,6 +1,6 @@
 package Animal;
 
-public enum Sex {
+public enum Gender {
     MALE,
     FEMALE
 }

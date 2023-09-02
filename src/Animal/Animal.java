@@ -11,22 +11,22 @@ public abstract class Animal extends Organism {
     private static final int DIRECTLX = 1;
     private static final int DIRECTRY = 2;
     private static final int DIRECTLY = 3;
-    private int maxSpeed;
+    private int Speed;
     private int maxCountCell;
     private double weightSatiety;
     private double satiety;
 
-    private Sex sex;
+    private Gender sex;
 
     public Animal(Species species) {
         super(species);
         int i = new Random().nextInt(2);
         if (i == 1) {
-            sex = Sex.FEMALE;
+            sex = Gender.FEMALE;
         } else {
-            sex = Sex.MALE;
+            sex = Gender.MALE;
         }
-        this.maxSpeed = species.getSpeed();
+        this.Speed = species.getSpeed();
         this.maxCountCell = species.getCountCell();
         this.weightSatiety = species.getSatiety();
         Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
@@ -37,11 +37,11 @@ public abstract class Animal extends Organism {
         super(cell, species);
         int i = new Random().nextInt(2);
         if (i == 1) {
-            sex = Sex.FEMALE;
+            sex = Gender.FEMALE;
         } else {
-            sex = Sex.MALE;
+            sex = Gender.MALE;
         }
-        this.maxSpeed = species.getSpeed();
+        this.Speed = species.getSpeed();
         this.maxCountCell = species.getCountCell();
         this.weightSatiety = species.getSatiety();
         Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
@@ -61,12 +61,12 @@ public abstract class Animal extends Organism {
     public abstract Animal born();
     public abstract void eat();
 
-    public void reproduction() {
+    public synchronized void reproduction() {
         Animal child;
-        if (sex.equals(Sex.FEMALE) && Island.cellList.get(indexCell).countSpecies(getSpecies()) < maxCountCell) {
+        if (sex.equals(Gender.FEMALE) && Island.cellList.get(indexCell).countSpecies(getSpecies()) < maxCountCell) {
             for (int i = 0; i < getCell().getAnimalList().size(); i++) {
                 Animal coupe = getCell().getAnimalList().get(i);
-                if (coupe.getSex().equals(Sex.MALE)) {
+                if (coupe.getSex().equals(Gender.MALE)) {
                     child = born();
                     i = getCell().getAnimalList().size() + 1;
                     System.out.println(getName() + " народила " + child.getName());
@@ -76,8 +76,8 @@ public abstract class Animal extends Organism {
     }
 
 
-    public void move() {
-        int speed = new Random().nextInt(maxSpeed) + 1;
+    public synchronized void move() {
+        int speed = new Random().nextInt(Speed) + 1;
         int direct = new Random().nextInt(DIRECTED);
         int x = getCell().getX();
         int y = getCell().getY();
@@ -114,16 +114,16 @@ public abstract class Animal extends Organism {
         } else System.out.println(getName() + " Тісно в комірки ");
         if (newIndex != index) {
             setSatiety(getSatiety() - (getSatiety() * 0.1 * speed));
+            die();
         }
-        die();
     }
 
     public int getMaxSpeed() {
-        return maxSpeed;
+        return Speed;
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
+        this.Speed = maxSpeed;
     }
 
     public int getMaxCountCell() {
@@ -150,11 +150,11 @@ public abstract class Animal extends Organism {
         this.satiety = satiety;
     }
 
-    public Sex getSex() {
+    public Gender getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
+    public void setSex(Gender sex) {
         this.sex = sex;
     }
 

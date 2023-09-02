@@ -22,13 +22,13 @@ public abstract class Organism {
         indexCell = ((Island.x) * (y - 1) + x) - 1;
         this.cell = Island.cellList.get(indexCell);
         this.weight = species.getWeight();
-        this.name = species.getName() + hashCode();
+        this.name = species.getName() + species.getPicture();
     }
 
     public Organism(Cell cell, Species species) {
         this.cell = cell;
         this.weight = species.getWeight();
-        this.name = species.getName() + hashCode();
+        this.name = species.getName() + species.getPicture();
         this.species = species;
         x = cell.getX();
         y = cell.getY();
