@@ -24,7 +24,7 @@ public class Wolf extends Predator {
             case HAMSTER -> chance = 80;
             case GOAT -> chance = 60;
             case SHEEP -> chance = 70;
-            case KANGAROO -> chance = 15;
+            case BOAR -> chance = 15;
             case COW -> chance = 10;
             case DUCK -> chance = 40;
             default -> chance = 0;

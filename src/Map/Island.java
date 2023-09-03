@@ -2,6 +2,7 @@ package Map;
 
 import Animal.Animal;
 import Animal.Cell;
+import Animal.Herbivore.Herb;
 
 import java.util.ArrayList;
 import java.util.List;

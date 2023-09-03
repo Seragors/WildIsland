@@ -4,14 +4,14 @@ import Animal.Animal;
 import Animal.Cell;
 import Animal.Species;
 
-public class Goat extends Herbivore {
+public class Boar extends Herbivore {
 
-    public Goat() {
-        super(Species.GOAT);
+    public Boar() {
+        super(Species.BOAR);
     }
 
-    public Goat(Cell cell) {
-        super(cell, Species.GOAT);
+    public Boar(Cell cell) {
+        super(cell, Species.BOAR);
     }
 
     @Override
@@ -19,6 +19,7 @@ public class Goat extends Herbivore {
         int chance;
         switch (species) {
             case HERB -> chance = 100;
+            case HAMSTER -> chance = 90;
             default -> chance = 0;
         }
         return chance;
@@ -26,6 +27,6 @@ public class Goat extends Herbivore {
 
     @Override
     public Animal born() {
-        return new Goat(getCell());
+        return new Boar(getCell());
     }
 }

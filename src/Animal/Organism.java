@@ -34,7 +34,9 @@ public abstract class Organism {
         y = cell.getY();
         indexCell = ((Island.x) * (y - 1) + x) - 1;
     }
+
     public abstract void die();
+
     public String getName() {
         return name;
     }

@@ -1,6 +1,6 @@
 package Animal;
 
-import Map.Herb;
+import Animal.Herbivore.Herb;
 
 import java.util.ArrayList;
 import java.util.List;

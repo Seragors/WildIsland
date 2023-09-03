@@ -1,7 +1,8 @@
-package Map;
+package Animal.Herbivore;
 
 import Animal.Organism;
 import Animal.Species;
+import Map.Island;
 
 public class Herb extends Organism {
 

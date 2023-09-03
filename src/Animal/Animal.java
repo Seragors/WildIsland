@@ -3,6 +3,7 @@ package Animal;
 import Map.Island;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal extends Organism {
 
@@ -15,7 +16,6 @@ public abstract class Animal extends Organism {
     private int maxCountCell;
     private double weightSatiety;
     private double satiety;
-
     private Gender sex;
 
     public Animal(Species species) {
@@ -48,7 +48,6 @@ public abstract class Animal extends Organism {
         Island.animalList.add(Animal.this);
     }
 
-
     @Override
     public void die() {
         if (satiety <= 0) {
@@ -59,6 +58,7 @@ public abstract class Animal extends Organism {
     }
 
     public abstract Animal born();
+
     public abstract void eat();
 
     public synchronized void reproduction() {
@@ -74,7 +74,6 @@ public abstract class Animal extends Organism {
             }
         }
     }
-
 
     public synchronized void move() {
         int speed = new Random().nextInt(Speed) + 1;
@@ -113,7 +112,8 @@ public abstract class Animal extends Organism {
             } else System.out.println(getName() + " Перемістився в комірку: " + getCell());
         } else System.out.println(getName() + " Тісно в комірки ");
         if (newIndex != index) {
-            setSatiety(getSatiety() - (getSatiety() * 0.1 * speed));
+            setSatiety(getSatiety() - (getSatiety() * 10 * speed));
+        } else {
             die();
         }
     }

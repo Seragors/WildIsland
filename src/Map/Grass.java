@@ -1,6 +1,8 @@
 package Map;
 
-public class Grass extends Thread{
+import Animal.Herbivore.Herb;
+
+public class Grass extends Thread {
     SettingIsland settingIsland;
 
     public Grass(SettingIsland settingIsland) {

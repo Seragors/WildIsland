@@ -6,8 +6,9 @@ public class EatHerb extends Thread {
     public EatHerb(SettingIsland settingIsland) {
         this.settingIsland = settingIsland;
     }
-    public void run(){
-        for (int i  = 0; i < SettingIsland.COUNT_OF_MOVE; i++){
+
+    public void run() {
+        for (int i = 0; i < SettingIsland.COUNT_OF_MOVE; i++) {
             settingIsland.eatHerb();
             try {
                 Thread.sleep(SettingIsland.COUNT_OF_SLEEP);

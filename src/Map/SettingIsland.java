@@ -6,9 +6,10 @@ import Animal.Predator.*;
 public class SettingIsland {
     public static final int X = 100;
     public static final int Y = 20;
-    public static final int COUNT_OF_MOVE = 2;
+    public static final int COUNT_OF_MOVE = 4;
+    public static final int COUNT_OF_REPRODUCTION = 2;
     public static final int COUNT_OF_SLEEP = 4;
-    public static final int COUNT_OF_HERB = 200;
+    public static final int COUNT_OF_HERB = 100;
     public static final int COUNT_OF_WOLF = 30;
     public static final int COUNT_OF_SNAKE = 30;
     public static final int COUNT_OF_FOX = 30;
@@ -22,7 +23,7 @@ public class SettingIsland {
     public static final int COUNT_OF_SHEEP = 140;
     public static final int COUNT_OF_KANGAROO = 50;
     public static final int COUNT_OF_COW = 10;
-    public static final int COUNT_OF_DUCK = 200;
+    public static final int COUNT_OF_DUCK = 300;
     public static final int COUNT_OF_CATERPILLAR = 1000;
 
     public SettingIsland() {
@@ -64,7 +65,7 @@ public class SettingIsland {
             new Sheep();
         }
         for (int i = 0; i < COUNT_OF_KANGAROO; i++) {
-            new Kangaroo();
+            new Boar();
         }
         for (int i = 0; i < COUNT_OF_COW; i++) {
             new Cow();
@@ -104,22 +105,23 @@ public class SettingIsland {
 
     public synchronized void eatAnimals() {
         for (int i = 0; i < Island.animalList.size(); i++) {
-            if (Island.animalList.get(i) instanceof Predator){
+            if (Island.animalList.get(i) instanceof Predator) {
                 Island.animalList.get(i).eat();
             }
-        }
-    }
-    public synchronized void animalReproduction (){
-        for (int i = 0; i < Island.animalList.size(); i++){
-            Island.animalList.get(i).reproduction();
         }
     }
 
-    public synchronized void  eatHerb(){
-        for (int i = 0; i < Island.animalList.size(); i++){
-            if (Island.animalList.get(i) instanceof Herbivore){
+    public synchronized void eatHerb() {
+        for (int i = 0; i < Island.animalList.size(); i++) {
+            if (Island.animalList.get(i) instanceof Herbivore) {
                 Island.animalList.get(i).eat();
             }
+        }
+    }
+
+    public synchronized void animalReproduction() {
+        for (int i = 0; i < Island.animalList.size(); i++) {
+            Island.animalList.get(i).reproduction();
         }
     }
 
