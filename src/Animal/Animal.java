@@ -48,6 +48,7 @@ public abstract class Animal extends Organism {
         Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
         Island.animalList.add(Animal.this);
     }
+
     @Override
     public void die() {
         if (satiety <= 0) {

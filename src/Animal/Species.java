@@ -49,7 +49,6 @@ public enum Species {
     public double getWeight() {
         return weight;
     }
-
     public int getSpeed() {
         return speed;
     }
