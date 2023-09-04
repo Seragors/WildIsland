@@ -2,7 +2,7 @@ import Map.*;
 
 public class Simulation {
     public static boolean isRuning = true;
-    public static int CYCLE = 4000;
+    public static int CYCLE = 10000;
 
     public void open() throws InterruptedException {
         SettingIsland island = new SettingIsland();

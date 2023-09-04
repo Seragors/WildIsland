@@ -8,10 +8,8 @@ public abstract class Organism {
 
     private String name;
     private Cell cell;
-
     private Species species;
     private double weight;
-
     public int x, y;
     public int indexCell;
 

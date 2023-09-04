@@ -1,15 +1,17 @@
 package Map;
 
+import Animal.Cell;
+import Animal.Species;
 import Animal.Herbivore.*;
 import Animal.Predator.*;
 
 public class SettingIsland {
     public static final int X = 100;
     public static final int Y = 20;
-    public static final int COUNT_OF_MOVE = 4;
+    public static final int COUNT_OF_MOVE = 3;
     public static final int COUNT_OF_REPRODUCTION = 2;
     public static final int COUNT_OF_SLEEP = 4;
-    public static final int COUNT_OF_HERB = 100;
+    public static final int COUNT_OF_HERB = 200;
     public static final int COUNT_OF_WOLF = 30;
     public static final int COUNT_OF_SNAKE = 30;
     public static final int COUNT_OF_FOX = 30;
@@ -23,7 +25,7 @@ public class SettingIsland {
     public static final int COUNT_OF_SHEEP = 140;
     public static final int COUNT_OF_KANGAROO = 50;
     public static final int COUNT_OF_COW = 10;
-    public static final int COUNT_OF_DUCK = 300;
+    public static final int COUNT_OF_DUCK = 200;
     public static final int COUNT_OF_CATERPILLAR = 1000;
 
     public SettingIsland() {

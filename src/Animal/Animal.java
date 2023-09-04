@@ -3,7 +3,6 @@ package Animal;
 import Map.Island;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal extends Organism {
 
@@ -28,7 +27,8 @@ public abstract class Animal extends Organism {
         }
         this.Speed = species.getSpeed();
         this.maxCountCell = species.getCountCell();
-        this.weightSatiety = species.getSatiety();
+        this.weightSatiety = species.getWeightSatiety();
+        this.satiety = species.getSatiety();
         Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
         Island.animalList.add(Animal.this);
     }
@@ -43,11 +43,11 @@ public abstract class Animal extends Organism {
         }
         this.Speed = species.getSpeed();
         this.maxCountCell = species.getCountCell();
-        this.weightSatiety = species.getSatiety();
+        this.weightSatiety = species.getWeightSatiety();
+        this.satiety = species.getSatiety();
         Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
         Island.animalList.add(Animal.this);
     }
-
     @Override
     public void die() {
         if (satiety <= 0) {
@@ -55,6 +55,7 @@ public abstract class Animal extends Organism {
             getCell().getAnimalList().remove(Animal.this);
             System.out.println(getName() + " загинув від голоду");
         }
+
     }
 
     public abstract Animal born();
@@ -67,9 +68,11 @@ public abstract class Animal extends Organism {
             for (int i = 0; i < getCell().getAnimalList().size(); i++) {
                 Animal coupe = getCell().getAnimalList().get(i);
                 if (coupe.getSex().equals(Gender.MALE)) {
-                    child = born();
-                    i = getCell().getAnimalList().size() + 1;
-                    System.out.println(getName() + " народила " + child.getName());
+                    if (getSpecies().getName().equals(coupe.getSpecies().getName())) {
+                        child = born();
+                        i = getCell().getAnimalList().size() + 1;
+                        System.out.println(getName() + " народила " + child.getName());
+                    }
                 }
             }
         }
@@ -103,6 +106,7 @@ public abstract class Animal extends Organism {
             y = Island.y;
         }
         int newIndex = ((Island.x) * (y - 1) + x) - 1;
+        die();
         if (Island.cellList.get(newIndex).countSpecies(getSpecies()) < maxCountCell) {
             Island.cellList.get(index).getAnimalList().remove(Animal.this);
             setCell(Island.cellList.get(newIndex));
@@ -112,8 +116,7 @@ public abstract class Animal extends Organism {
             } else System.out.println(getName() + " Перемістився в комірку: " + getCell());
         } else System.out.println(getName() + " Тісно в комірки ");
         if (newIndex != index) {
-            setSatiety(getSatiety() - (getSatiety() * 10 * speed));
-        } else {
+            setSatiety(getSatiety() - (getSatiety() * 0.8 * speed));
             die();
         }
     }
@@ -160,11 +163,6 @@ public abstract class Animal extends Organism {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "maxCountCell=" + maxCountCell +
-                ", weightSatiety=" + weightSatiety +
-                ", satiety=" + satiety +
-                ", sex=" + sex +
-                '}';
+        return getName() + " " + getCell() + " пол=" + sex + ", вага=" + getWeight() + ", ситість=" + satiety + '}';
     }
 }
