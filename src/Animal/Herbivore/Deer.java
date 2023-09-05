@@ -15,16 +15,6 @@ public class Deer extends Herbivore {
     }
 
     @Override
-    public int chanceEat(Species species) {
-        int chance =
-                switch (species) {
-                    case HERB -> 100;
-                    default -> 0;
-                };
-        return chance;
-    }
-
-    @Override
     public Animal born() {
         return new Deer(getCell());
     }
