@@ -15,12 +15,12 @@ public class Duck extends Herbivore {
     }
 
     public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case CATERPILLAR -> chance = 90;
-            case HERB -> chance = 100;
-            default -> chance = 0;
-        }
+        int chance =
+                switch (species) {
+                    case CATERPILLAR -> 90;
+                    case HERB -> 100;
+                    default -> 0;
+                };
         return chance;
     }
 

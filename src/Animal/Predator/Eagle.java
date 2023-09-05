@@ -15,14 +15,14 @@ public class Eagle extends Predator {
 
     @Override
     public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case SNAKE -> chance = 10;
-            case HARE -> chance = 90;
-            case HAMSTER -> chance = 90;
-            case DUCK -> chance = 80;
-            default -> chance = 0;
-        }
+        int chance =
+                switch (species) {
+                    case SNAKE -> 10;
+                    case HARE -> 90;
+                    case HAMSTER -> 90;
+                    case DUCK -> 80;
+                    default -> 0;
+                };
         return chance;
     }
 

@@ -15,12 +15,12 @@ public class Cow extends Herbivore {
 
     @Override
     public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case HERB -> chance = 100;
-            case CATERPILLAR -> chance = 90;
-            default -> chance = 0;
-        }
+        int chance =
+                switch (species) {
+                    case HERB -> 100;
+                    case CATERPILLAR -> 90;
+                    default -> 0;
+                };
         return chance;
     }
 

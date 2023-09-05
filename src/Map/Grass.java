@@ -1,6 +1,7 @@
 package Map;
 
 import Animal.Herbivore.Herb;
+import Animal.Species;
 
 public class Grass extends Thread {
     SettingIsland settingIsland;
@@ -11,8 +12,8 @@ public class Grass extends Thread {
 
     public void run() {
         for (int i = 0; i < SettingIsland.COUNT_OF_MOVE; i++) {
-            for (int j = 0; j < SettingIsland.COUNT_OF_HERB; j++) {
-                if (Island.herbList.size() < SettingIsland.COUNT_OF_HERB) {
+            for (int j = 0; j < Species.HERB.getCountCell(); j++) {
+                if (Island.herbList.size() < Species.HERB.getCountCell()) {
                     new Herb();
                     try {
                         Thread.sleep(SettingIsland.COUNT_OF_SLEEP);

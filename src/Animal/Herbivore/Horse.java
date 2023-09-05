@@ -15,16 +15,6 @@ public class Horse extends Herbivore {
     }
 
     @Override
-    public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case HERB -> chance = 100;
-            default -> chance = 0;
-        }
-        return chance;
-    }
-
-    @Override
     public Animal born() {
         return new Horse(getCell());
     }

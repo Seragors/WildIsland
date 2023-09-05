@@ -16,12 +16,13 @@ public class Boar extends Herbivore {
 
     @Override
     public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case HERB -> chance = 100;
-            case HAMSTER -> chance = 90;
-            default -> chance = 0;
-        }
+        int chance =
+                switch (species) {
+                    case HERB -> 100;
+                    case CATERPILLAR -> 90;
+                    case HAMSTER -> 50;
+                    default -> 0;
+                };
         return chance;
     }
 

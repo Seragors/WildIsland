@@ -2,7 +2,7 @@ package Animal;
 
 public enum Species {
     BEAR("Ведмідь ", "\uD83D\uDC3B", 500, 2, 5, 80, 40),
-    EAGLE("Орел ", "\uD83E\uDD85", 6, 3, 20, 1, 0.5),
+    EAGLE("Орел ", "\uD83E\uDD85", 6, 3, 20, 1, 1.5),
     FOX("Лиса ", "\uD83E\uDD8A", 8, 2, 30, 2, 1),
     SNAKE("Змія ", "\uD83D\uDC0D", 15, 1, 30, 3, 2),
     WOLF("Волк ", "\uD83D\uDC3A", 50, 3, 30, 8, 6),
@@ -16,11 +16,11 @@ public enum Species {
     HORSE("Кінь ", "\uD83D\uDC0E", 400, 4, 20, 60, 30),
     BOAR("Кабан ", "\uD83D\uDC03", 400, 2, 50, 50, 25),
     SHEEP("Вівця ", "\uD83D\uDC11", 70, 3, 140, 15, 5),
-    CATERPILLAR("Гусінь ", "\uD83D\uDC1B", 0.01, 0, 1000, 0, 0.5),
+    CATERPILLAR("Гусінь ", "\uD83D\uDC1B", 0.01, 0, 1000, 0, 0),
 
     HERB("Рослини ", "\uD83C\uDF3F", 1, 0, 200, 0, 0);
 
-    public final String name;
+    private final String name;
     private final String picture;
     private final double weight;
     private final int speed;

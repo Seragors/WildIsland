@@ -38,6 +38,7 @@ public abstract class Herbivore extends Animal {
                     if (newSatiety > getWeightSatiety()) {
                         newSatiety = getWeightSatiety();
                     }
+                    die();
                     setSatiety(newSatiety);
                     if (newSatiety != oldSatiety) {
                         if (j <= chance) {

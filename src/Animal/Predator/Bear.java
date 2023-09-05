@@ -15,20 +15,20 @@ public class Bear extends Predator {
 
     @Override
     public int chanceEat(Species species) {
-        int chance;
-        switch (species) {
-            case COW -> chance = 20;
-            case SNAKE -> chance = 80;
-            case HORSE -> chance = 40;
-            case DEER -> chance = 80;
-            case HARE -> chance = 80;
-            case HAMSTER -> chance = 90;
-            case GOAT -> chance = 70;
-            case SHEEP -> chance = 70;
-            case BOAR -> chance = 50;
-            case DUCK -> chance = 10;
-            default -> chance = 0;
-        }
+        int chance =
+                switch (species) {
+                    case COW -> 20;
+                    case SNAKE -> 80;
+                    case HORSE -> 40;
+                    case DEER -> 80;
+                    case HARE -> 80;
+                    case HAMSTER -> 90;
+                    case GOAT -> 70;
+                    case SHEEP -> 70;
+                    case BOAR -> 50;
+                    case DUCK -> 10;
+                    default -> 0;
+                };
         return chance;
     }
 

@@ -1,81 +1,64 @@
 package Map;
 
-import Animal.Cell;
-import Animal.Species;
 import Animal.Herbivore.*;
 import Animal.Predator.*;
+import Animal.Species;
 
 public class SettingIsland {
     public static final int X = 100;
     public static final int Y = 20;
     public static final int COUNT_OF_MOVE = 3;
     public static final int COUNT_OF_REPRODUCTION = 2;
-    public static final int COUNT_OF_SLEEP = 4;
-    public static final int COUNT_OF_HERB = 200;
-    public static final int COUNT_OF_WOLF = 30;
-    public static final int COUNT_OF_SNAKE = 30;
-    public static final int COUNT_OF_FOX = 30;
-    public static final int COUNT_OF_BEAR = 5;
-    public static final int COUNT_OF_EAGLE = 20;
-    public static final int COUNT_OF_HORSE = 20;
-    public static final int COUNT_OF_DEER = 20;
-    public static final int COUNT_OF_HARE = 150;
-    public static final int COUNT_OF_HAMSTER = 500;
-    public static final int COUNT_OF_GOAT = 140;
-    public static final int COUNT_OF_SHEEP = 140;
-    public static final int COUNT_OF_KANGAROO = 50;
-    public static final int COUNT_OF_COW = 10;
-    public static final int COUNT_OF_DUCK = 200;
-    public static final int COUNT_OF_CATERPILLAR = 1000;
+    public static final int COUNT_OF_SLEEP = 2;
 
     public SettingIsland() {
         new Island(X, Y);
-        for (int i = 0; i < COUNT_OF_HERB; i++) {
+        for (int i = 0; i < Species.HERB.getCountCell(); i++) {
             new Herb();
         }
-        for (int i = 0; i < COUNT_OF_WOLF; i++) {
+        for (int i = 0; i < Species.WOLF.getCountCell(); i++) {
             new Wolf();
         }
-        for (int i = 0; i < COUNT_OF_SNAKE; i++) {
+        for (int i = 0; i < Species.SNAKE.getCountCell(); i++) {
             new Snake();
         }
-        for (int i = 0; i < COUNT_OF_FOX; i++) {
+        for (int i = 0; i < Species.FOX.getCountCell(); i++) {
             new Fox();
         }
-        for (int i = 0; i < COUNT_OF_BEAR; i++) {
+        for (int i = 0; i < Species.BEAR.getCountCell(); i++) {
             new Bear();
         }
-        for (int i = 0; i < COUNT_OF_EAGLE; i++) {
+        for (int i = 0; i < Species.EAGLE.getCountCell(); i++) {
             new Eagle();
         }
-        for (int i = 0; i < COUNT_OF_HORSE; i++) {
+        for (int i = 0; i < Species.HORSE.getCountCell(); i++) {
             new Horse();
         }
-        for (int i = 0; i < COUNT_OF_DEER; i++) {
+        for (int i = 0; i < Species.DEER.getCountCell(); i++) {
             new Deer();
         }
-        for (int i = 0; i < COUNT_OF_HARE; i++) {
+        for (int i = 0; i < Species.HARE.getCountCell(); i++) {
             new Hare();
         }
-        for (int i = 0; i < COUNT_OF_HAMSTER; i++) {
+        for (int i = 0; i < Species.HAMSTER.getCountCell(); i++) {
             new Hamster();
         }
-        for (int i = 0; i < COUNT_OF_GOAT; i++) {
+        for (int i = 0; i < Species.GOAT.getCountCell(); i++) {
             new Goat();
         }
-        for (int i = 0; i < COUNT_OF_SHEEP; i++) {
+        for (int i = 0; i < Species.SHEEP.getCountCell(); i++) {
             new Sheep();
         }
-        for (int i = 0; i < COUNT_OF_KANGAROO; i++) {
+        for (int i = 0; i < Species.BOAR.getCountCell(); i++) {
             new Boar();
         }
-        for (int i = 0; i < COUNT_OF_COW; i++) {
+        for (int i = 0; i < Species.COW.getCountCell(); i++) {
             new Cow();
         }
-        for (int i = 0; i < COUNT_OF_DUCK; i++) {
+        for (int i = 0; i < Species.DUCK.getCountCell(); i++) {
             new Duck();
         }
-        for (int i = 0; i < COUNT_OF_CATERPILLAR; i++) {
+        for (int i = 0; i < Species.CATERPILLAR.getCountCell(); i++) {
             new Caterpillar();
         }
         System.out.println("Створенний острів розміром: " + Island.x + "x" + Island.y + " з " + Island.herbList.size() + " Рослинами, " + countHerbivore() + " Травоїдними, " + countPredator() + " Хижаками.");

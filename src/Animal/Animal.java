@@ -19,22 +19,15 @@ public abstract class Animal extends Organism {
 
     public Animal(Species species) {
         super(species);
-        int i = new Random().nextInt(2);
-        if (i == 1) {
-            sex = Gender.FEMALE;
-        } else {
-            sex = Gender.MALE;
-        }
-        this.Speed = species.getSpeed();
-        this.maxCountCell = species.getCountCell();
-        this.weightSatiety = species.getWeightSatiety();
-        this.satiety = species.getSatiety();
-        Island.cellList.get(indexCell).getAnimalList().add(Animal.this);
-        Island.animalList.add(Animal.this);
+        animalSpasies(species);
     }
 
     public Animal(Cell cell, Species species) {
         super(cell, species);
+        animalSpasies(species);
+    }
+
+    public void animalSpasies(Species species) {
         int i = new Random().nextInt(2);
         if (i == 1) {
             sex = Gender.FEMALE;
@@ -56,7 +49,6 @@ public abstract class Animal extends Organism {
             getCell().getAnimalList().remove(Animal.this);
             System.out.println(getName() + " загинув від голоду");
         }
-
     }
 
     public abstract Animal born();
@@ -107,7 +99,6 @@ public abstract class Animal extends Organism {
             y = Island.y;
         }
         int newIndex = ((Island.x) * (y - 1) + x) - 1;
-        die();
         if (Island.cellList.get(newIndex).countSpecies(getSpecies()) < maxCountCell) {
             Island.cellList.get(index).getAnimalList().remove(Animal.this);
             setCell(Island.cellList.get(newIndex));
@@ -117,7 +108,7 @@ public abstract class Animal extends Organism {
             } else System.out.println(getName() + " Перемістився в комірку: " + getCell());
         } else System.out.println(getName() + " Тісно в комірки ");
         if (newIndex != index) {
-            setSatiety(getSatiety() - (getSatiety() * 0.8 * speed));
+            setSatiety(getSatiety() - (getSatiety() * 0.5 * speed));
             die();
         }
     }
