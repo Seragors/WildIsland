@@ -5,7 +5,7 @@ import Animal.Predator.*;
 import Animal.Species;
 
 public class SettingIsland {
-    public static final int X = 20;
+    public static final int X = 100;
     public static final int Y = 20;
     public static final int COUNT_OF_MOVE = 2;
     public static final int COUNT_OF_SLEEP = 2000;
