@@ -7,13 +7,11 @@ public class Simulation{
 
     public void open() throws InterruptedException  {
         Scanner cs = new Scanner(System.in);
-        System.out.println("Введіть кількість тактів життя острова: ");
+        System.out.println("Введіть кількість днів життя острова: ");
         int cycle = cs.nextInt();
         int number = 0;
         SettingIsland island = new SettingIsland();
         while (isRuning) {
-            Move move = new Move(island);
-            move.start();
             EatAnimal eatAnimal = new EatAnimal(island);
             eatAnimal.start();
             EatHerb eatHerb = new EatHerb(island);
@@ -22,12 +20,14 @@ public class Simulation{
             reproduction.start();
             Grass grass = new Grass(island);
             grass.start();
+            Move move = new Move(island);
+            move.start();
 
-            move.join();
             eatAnimal.join();
             eatHerb.join();
             reproduction.join();
             grass.join();
+            move.join();
 
             island.getStatistic();
             number++;

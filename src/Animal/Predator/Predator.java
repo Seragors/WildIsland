@@ -5,7 +5,9 @@ import Animal.Species;
 import Animal.Cell;
 import Map.Island;
 
+import javax.swing.plaf.TableHeaderUI;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Predator extends Animal {
 
@@ -28,7 +30,7 @@ public abstract class Predator extends Animal {
         if (getSatiety() < getWeightSatiety()) {
             for (int i = 0; i < getCell().getAnimalList().size(); i++) {
                 if (getSatiety() < getWeightSatiety()) {
-                    int j = new Random().nextInt(MAX_COUNT) + 1;
+                    int j = ThreadLocalRandom.current().nextInt(MAX_COUNT) + 1;
                     Animal food = getCell().getAnimalList().get(i);
                     chance = chanceEat(food.getSpecies());
                     if (j <= chance) {

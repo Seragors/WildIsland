@@ -2,7 +2,12 @@ package Animal.Predator;
 
 import Animal.Animal;
 import Animal.Cell;
+import Animal.Herbivore.Deer;
+import Animal.Herbivore.Hare;
+import Animal.Herbivore.Horse;
 import Animal.Species;
+
+import java.util.Map;
 
 public class Wolf extends Predator {
 

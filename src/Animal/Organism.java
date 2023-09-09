@@ -3,6 +3,7 @@ package Animal;
 import Map.Island;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Organism {
 
@@ -15,8 +16,8 @@ public abstract class Organism {
 
     public Organism(Species species) {
         this.species = species;
-        x = (new Random().nextInt(Island.x)) + 1;
-        y = (new Random().nextInt(Island.y)) + 1;
+        x = (ThreadLocalRandom.current().nextInt(Island.x)) + 1;
+        y = (ThreadLocalRandom.current().nextInt(Island.y)) + 1;
         indexCell = ((Island.x) * (y - 1) + x) - 1;
         this.cell = Island.cellList.get(indexCell);
         this.weight = species.getWeight();

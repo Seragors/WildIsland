@@ -6,6 +6,7 @@ import Animal.Cell;
 import Map.Island;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Herbivore extends Animal {
 
@@ -29,7 +30,7 @@ public abstract class Herbivore extends Animal {
         if (getSatiety() < getWeightSatiety()) {
             for (int i = 0; i < getCell().getHerbList().size(); i++) {
                 if (getSatiety() < getWeightSatiety()) {
-                    int j = new Random().nextInt(MAX_COUNT) + 1;
+                    int j = ThreadLocalRandom.current().nextInt(MAX_COUNT) + 1;
                     Herb food = getCell().getHerbList().get(i);
                     Animal animalFood = getCell().getAnimalList().get(i);
                     chance = chanceEat(animalFood.getSpecies());

@@ -13,7 +13,7 @@ public class Move extends Thread {
             try {
                 Thread.sleep(SettingIsland.COUNT_OF_SLEEP);
             } catch (InterruptedException e) {
-                System.out.println("Error");
+                throw new RuntimeException(e);
             }
         }
     }

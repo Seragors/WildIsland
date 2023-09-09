@@ -3,6 +3,8 @@ package Animal;
 import Map.Island;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.random.RandomGeneratorFactory;
 
 public abstract class Animal extends Organism {
 
@@ -27,8 +29,12 @@ public abstract class Animal extends Organism {
         animalSpasies(species);
     }
 
+    public abstract Animal born();
+
+    public abstract void eat();
+
     public void animalSpasies(Species species) {
-        int i = new Random().nextInt(2);
+        int i = ThreadLocalRandom.current().nextInt(2);
         if (i == 1) {
             sex = Gender.FEMALE;
         } else {
@@ -51,10 +57,6 @@ public abstract class Animal extends Organism {
         }
     }
 
-    public abstract Animal born();
-
-    public abstract void eat();
-
     public synchronized void reproduction() {
         Animal child;
         if (sex.equals(Gender.FEMALE) && Island.cellList.get(indexCell).countSpecies(getSpecies()) < maxCountCell) {
@@ -72,19 +74,16 @@ public abstract class Animal extends Organism {
     }
 
     public synchronized void move() {
-        int speed = new Random().nextInt(Speed) + 1;
-        int direct = new Random().nextInt(DIRECTED);
+        int speed = ThreadLocalRandom.current().nextInt(Speed) + 1;
+        int direct = ThreadLocalRandom.current().nextInt(DIRECTED);
         int x = getCell().getX();
         int y = getCell().getY();
         int index = ((Island.x) * (y - 1) + x) - 1;
-        if (direct == DIRECTRX) {
-            x = getCell().getX() + speed;
-        } else if (direct == DIRECTLX) {
-            x = getCell().getX() - speed;
-        } else if (direct == DIRECTRY) {
-            y = getCell().getY() + speed;
-        } else if (direct == DIRECTLY) {
-            y = getCell().getY() - speed;
+        switch (direct) {
+            case DIRECTRX -> x = getCell().getX() + speed;
+            case DIRECTLX -> x = getCell().getX() - speed;
+            case DIRECTRY -> y = getCell().getY() + speed;
+            case DIRECTLY -> y = getCell().getY() - speed;
         }
         if (x <= 1) {
             x = 1;
@@ -108,7 +107,7 @@ public abstract class Animal extends Organism {
             } else System.out.println(getName() + " Перемістився в комірку: " + getCell());
         } else System.out.println(getName() + " Тісно в комірки ");
         if (newIndex != index) {
-            setSatiety(getSatiety() - (getSatiety() * 0.5 * speed));
+            setSatiety(getSatiety() - (getSatiety() * 0.1 * speed));
             die();
         }
     }
