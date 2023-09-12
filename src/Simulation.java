@@ -1,39 +1,39 @@
 import Map.*;
 
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class Simulation{
+public class Simulation implements Runnable {
     public static boolean isRuning = true;
 
-    public void open() throws InterruptedException  {
+    @Override
+    public void run() {
+        SettingIsland island = new SettingIsland();
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(5);
         Scanner cs = new Scanner(System.in);
         System.out.println("Введіть кількість днів життя острова: ");
         int cycle = cs.nextInt();
         int number = 0;
-        SettingIsland island = new SettingIsland();
         while (isRuning) {
-            EatAnimal eatAnimal = new EatAnimal(island);
-            eatAnimal.start();
-            EatHerb eatHerb = new EatHerb(island);
-            eatHerb.start();
-            Reproduction reproduction = new Reproduction(island);
-            reproduction.start();
-            Grass grass = new Grass(island);
-            grass.start();
-            Move move = new Move(island);
-            move.start();
-
-            eatAnimal.join();
-            eatHerb.join();
-            reproduction.join();
-            grass.join();
-            move.join();
-
-            island.getStatistic();
-            number++;
+            executorService.submit(new Move(island));
+            executorService.submit(new EatAnimal(island));
+            executorService.submit(new EatHerb(island));
+            executorService.submit(new Grass(island));
+            executorService.submit(new Reproduction(island));
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             if (cycle <= number) {
                 isRuning = false;
+                executorService.shutdownNow();
+                island.getStatistic();
             }
+            number++;
         }
     }
 }

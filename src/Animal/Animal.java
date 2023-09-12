@@ -62,12 +62,10 @@ public abstract class Animal extends Organism {
         if (sex.equals(Gender.FEMALE) && Island.cellList.get(indexCell).countSpecies(getSpecies()) < maxCountCell) {
             for (int i = 0; i < getCell().getAnimalList().size(); i++) {
                 Animal coupe = getCell().getAnimalList().get(i);
-                if (coupe.getSex().equals(Gender.MALE)) {
-                    if (getSpecies().getName().equals(coupe.getSpecies().getName())) {
+                if (coupe.getSex().equals(Gender.MALE) && getSpecies().getName().equals(coupe.getSpecies().getName())) {
                         child = born();
                         i = getCell().getAnimalList().size() + 1;
                         System.out.println(getName() + " народила " + child.getName());
-                    }
                 }
             }
         }

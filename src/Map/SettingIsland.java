@@ -8,7 +8,7 @@ public class SettingIsland {
     public static final int X = 100;
     public static final int Y = 20;
     public static final int COUNT_OF_MOVE = 2;
-    public static final int COUNT_OF_SLEEP = 2000;
+    public static final int COUNT_OF_SLEEP = 1000;
 
     public SettingIsland() {
         new Island(X, Y);
@@ -81,24 +81,14 @@ public class SettingIsland {
         return count;
     }
 
-    public int countAnimal() {
-        int countAnimals = 0;
-        if (Island.animalList.size() % 2 == 0) {
-            countAnimals = 2;
-        } else {
-            countAnimals = 3;
-        }
-        return countAnimals;
-    }
-
     public synchronized void animalsMove() {
-        for (int i = 0; i < Island.animalList.size() - countAnimal(); i++) {
+        for (int i = 0; i < Island.animalList.size(); i++) {
             Island.animalList.get(i).move();
         }
     }
 
     public synchronized void eatAnimals() {
-        for (int i = 0; i < Island.animalList.size() - countAnimal(); i++) {
+        for (int i = 0; i < Island.animalList.size(); i++) {
             if (Island.animalList.get(i) instanceof Predator) {
                 Island.animalList.get(i).eat();
             }
@@ -106,7 +96,7 @@ public class SettingIsland {
     }
 
     public synchronized void eatHerb() {
-        for (int i = 0; i < Island.animalList.size() - countAnimal(); i++) {
+        for (int i = 0; i < Island.animalList.size(); i++) {
             if (Island.animalList.get(i) instanceof Herbivore) {
                 Island.animalList.get(i).eat();
             }
@@ -114,7 +104,7 @@ public class SettingIsland {
     }
 
     public synchronized void animalReproduction() {
-        for (int i = 0; i < Island.animalList.size() - countAnimal(); i++) {
+        for (int i = 0; i < Island.animalList.size() / 2; i++) {
             Island.animalList.get(i).reproduction();
         }
     }

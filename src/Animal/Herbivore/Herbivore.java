@@ -1,14 +1,16 @@
 package Animal.Herbivore;
 
 import Animal.Animal;
+import Animal.Predator.Predator;
 import Animal.Species;
 import Animal.Cell;
+import Map.EatHerb;
 import Map.Island;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Herbivore extends Animal {
+public abstract class Herbivore extends Animal{
 
     private static final int MAX_COUNT = 100;
     int chance;
@@ -39,7 +41,6 @@ public abstract class Herbivore extends Animal {
                     if (newSatiety > getWeightSatiety()) {
                         newSatiety = getWeightSatiety();
                     }
-                    die();
                     setSatiety(newSatiety);
                     if (newSatiety != oldSatiety) {
                         if (j <= chance) {
